@@ -5,7 +5,7 @@ description = "A Model Context Protocol (MCP) server providing comprehensive Mag
 readme = "README.md"
 requires-python = ">=3.12"
 authors = [
-    { name = "Your Name", email = "your.email@example.com" }
+    { name = "wtfregia", email = "wtfregia@users.noreply.github.com" }
 ]
 license = { text = "MIT" }
 keywords = ["mcp", "magic-the-gathering", "mtg", "commander", "edh", "ai"]
@@ -32,9 +32,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/mtg-mcp"
-Repository = "https://github.com/yourusername/mtg-mcp"
-Issues = "https://github.com/yourusername/mtg-mcp/issues"
+Homepage = "https://github.com/wtfregia/mtg-mcp"
+Repository = "https://github.com/wtfregia/mtg-mcp"
+Issues = "https://github.com/wtfregia/mtg-mcp/issues"
 
 [project.scripts]
 mtg-mcp = "main:main"

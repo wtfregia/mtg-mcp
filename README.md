@@ -1,5 +1,7 @@
 # MTG-MCP
 
+<!-- mcp-name: io.github.wtfregia/mtg-mcp -->
+
 **Magic: The Gathering Model Context Protocol Server**
 
 A comprehensive Model Context Protocol (MCP) server that provides AI assistants with rich Magic: The Gathering information, including card data, comprehensive rules, EDHREC recommendations, combo interactions, and intelligent Commander deck generation.
@@ -211,6 +213,43 @@ Generated decklists follow the standard format compatible with popular deck buil
 - Format: `[quantity]x [Card Name]`
 - Basic lands can have multiple copies
 - All other cards follow singleton rule (1x each)
+
+## Publishing
+
+This project is published to both PyPI and the Model Context Protocol Registry for easy installation.
+
+### Automated Publishing
+
+The project uses GitHub Actions for automated publishing:
+
+1. **Push a version tag** to trigger the workflow:
+   ```bash
+   git tag v0.1.0
+   git push origin v0.1.0
+   ```
+
+2. **GitHub Actions automatically**:
+   - Builds the Python package
+   - Publishes to PyPI
+   - Publishes to MCP Registry using GitHub OIDC authentication
+
+### Prerequisites for Publishing
+
+To set up publishing for the first time, you need:
+
+1. **PyPI API Token**: Create a token at https://pypi.org/manage/account/token/
+   - Add it as a GitHub secret named `PYPI_API_TOKEN`
+   - Go to: Repository Settings → Secrets and variables → Actions → New repository secret
+
+2. **No additional secrets needed for MCP Registry**: The workflow uses GitHub OIDC for authentication
+
+### Manual Publishing (Alternative)
+
+If you prefer to publish manually:
+
+1. Install the MCP publisher CLI (see [MCP Publishing Guide](https://github.com/modelcontextprotocol/registry/blob/main/docs/guides/publishing/publish-server.md))
+2. Authenticate with GitHub: `mcp-publisher login github`
+3. Publish: `mcp-publisher publish`
 
 ## Contributing
 
