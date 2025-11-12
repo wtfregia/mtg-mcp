@@ -75,7 +75,7 @@ async def get_card_types() -> Dict[str, Any]:
             except Exception:
                 continue
     except Exception:
-        pass
+        logger.exception("Failed to fetch or process subtypes in get_card_types")
 
     try:
         result["supertypes"] = Supertype.all()
