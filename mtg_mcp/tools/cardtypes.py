@@ -73,6 +73,7 @@ async def get_card_types() -> Dict[str, Any]:
                             result["subtypes"][main_type].append(subtype)
                             break
             except Exception:
+                logger.exception(f"Failed to process subtype '{subtype}' in get_card_types")
                 continue
     except Exception:
         logger.exception("Failed to fetch or process subtypes in get_card_types")
