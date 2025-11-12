@@ -65,7 +65,7 @@ class TestArchidektTools:
             with patch('mtg_mcp.tools.archidekt.rate_limit_api_call', new_callable=AsyncMock):
                 result = await fetch_archidekt_deck("https://archidekt.com/decks/123/test-deck")
 
-                assert result["success"] == True
+                assert result["success"]
                 assert result["deck_info"]["name"] == "Test Deck"
                 assert result["total_cards"] == 1
                 assert len(result["commanders"]) == 1
