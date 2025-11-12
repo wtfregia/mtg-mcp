@@ -4,8 +4,9 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-import mtg_mcp.utils as utils
+import mtg_mcp.utils
 from mtg_mcp.utils import (
+    _last_api_call_time,
     fetch_and_parse_rules,
     fetch_banned_cards,
     fetch_game_changers,
@@ -14,6 +15,43 @@ from mtg_mcp.utils import (
     get_rules,
     rate_limit_api_call,
 )
+
+
+@pytest.fixture(autouse=True)
+def reset_rate_limiting():
+    """Reset rate limiting state before each test"""
+    original = _last_api_call_time.copy()
+    _last_api_call_time.clear()
+    yield
+    _last_api_call_time.clear()
+    _last_api_call_time.update(original)
+
+
+@pytest.fixture
+def reset_rules_cache():
+    """Reset rules cache before and after test"""
+    original = mtg_mcp.utils._rules_cache
+    mtg_mcp.utils._rules_cache = None
+    yield
+    mtg_mcp.utils._rules_cache = original
+
+
+@pytest.fixture
+def reset_banned_cards_cache():
+    """Reset banned cards cache before and after test"""
+    original = mtg_mcp.utils._banned_cards_cache
+    mtg_mcp.utils._banned_cards_cache = None
+    yield
+    mtg_mcp.utils._banned_cards_cache = original
+
+
+@pytest.fixture
+def reset_game_changers_cache():
+    """Reset game changers cache before and after test"""
+    original = mtg_mcp.utils._game_changers_cache
+    mtg_mcp.utils._game_changers_cache = None
+    yield
+    mtg_mcp.utils._game_changers_cache = original
 
 
 class TestRateLimiting:
@@ -86,11 +124,8 @@ class TestRulesFetching:
             assert result["error"] == "Could not fetch current rules"
 
     @pytest.mark.asyncio
-    async def test_get_rules_caching(self):
+    async def test_get_rules_caching(self, reset_rules_cache):
         """Test that rules are cached after first fetch"""
-        # Reset cache
-        utils._rules_cache = None
-
         with patch('mtg_mcp.utils.fetch_and_parse_rules') as mock_fetch:
             mock_fetch.return_value = {"last_updated": "2025-09-19", "sections": {}}
 
@@ -145,10 +180,8 @@ class TestBannedCards:
                 assert result["banned_cards"][0] == "Banned Card"
 
     @pytest.mark.asyncio
-    async def test_get_banned_cards_caching(self):
+    async def test_get_banned_cards_caching(self, reset_banned_cards_cache):
         """Test that banned cards are cached"""
-        utils._banned_cards_cache = None
-
         with patch('mtg_mcp.utils.fetch_banned_cards') as mock_fetch:
             mock_fetch.return_value = {"banned_cards": ["Test"]}
 
@@ -222,10 +255,8 @@ class TestGameChangers:
                 assert len(result["cards"]) == 1
 
     @pytest.mark.asyncio
-    async def test_get_game_changers_caching(self):
+    async def test_get_game_changers_caching(self, reset_game_changers_cache):
         """Test that game changers are cached"""
-        utils._game_changers_cache = None
-
         with patch('mtg_mcp.utils.fetch_game_changers') as mock_fetch:
             mock_fetch.return_value = {"cards": ["Test"]}
 

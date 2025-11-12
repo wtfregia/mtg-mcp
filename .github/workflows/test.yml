@@ -23,7 +23,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       
       - name: Cache pip dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('pyproject.toml') }}
@@ -33,15 +33,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install .
           pip install .[test]
       
-      - name: Run syntax check
+      - name: Run Ruff linter
         run: |
-          python -m py_compile mtg_mcp/__init__.py
-          python -m py_compile mtg_mcp/__main__.py
-          python -m py_compile mtg_mcp/utils.py
-          python -m py_compile mtg_mcp/tools/*.py
+          ruff check .
       
       - name: Run unit tests with coverage
         run: |
