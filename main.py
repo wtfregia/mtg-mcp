@@ -1697,11 +1697,11 @@ async def fetch_archidekt_deck(deck_url: str) -> Dict[str, Any]:
     
     # Extract deck ID from URL
     # URL format: https://archidekt.com/decks/{deck_id}/{deck_name}
-    match = re.search(r'/decks/(\d+)', deck_url)
+    match = re.search(r'https?://(?:www\.)?archidekt\.com/decks/(\d+)', deck_url)
     
     if not match:
         return {
-            "error": "Invalid Archidekt URL format",
+            "error": "Invalid Archidekt URL. Please provide a URL from archidekt.com in the correct format.",
             "expected_format": "https://archidekt.com/decks/{deck_id}/{deck_name}",
             "example": "https://archidekt.com/decks/17187915/automation_testing"
         }
