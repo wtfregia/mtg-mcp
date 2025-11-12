@@ -6,6 +6,16 @@
 
 A comprehensive Model Context Protocol (MCP) server that provides AI assistants with rich Magic: The Gathering information, including card data, comprehensive rules, EDHREC recommendations, combo interactions, and intelligent Commander deck generation.
 
+[![PyPI version](https://badge.fury.io/py/mtg-mcp.svg)](https://pypi.org/project/mtg-mcp/)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+
+## Quick Links
+
+- **[Quick Start Guide](docs/QUICKSTART.md)** - Get up and running in 5 minutes
+- **[Setup Guide](docs/SETUP.md)** - Detailed installation and configuration
+- **[Tools Documentation](docs/TOOLS.md)** - Complete API reference
+- **[PyPI Package](https://pypi.org/project/mtg-mcp/)** - Install from Python Package Index
+
 ## Overview
 
 MTG-MCP integrates multiple Magic: The Gathering data sources to provide AI assistants with authoritative information for answering questions, making recommendations, and generating legal Commander decklists. The server leverages official comprehensive rules, Scryfall card database, EDHREC statistics, and Commander Spellbook combo data.
@@ -41,78 +51,57 @@ MTG-MCP integrates multiple Magic: The Gathering data sources to provide AI assi
 
 ## Installation
 
-### Prerequisites
+For detailed installation instructions and troubleshooting, see the **[Setup Guide](docs/SETUP.md)**.
 
-- Python 3.12 or higher
-- pip package manager
+### Quick Start (Recommended)
 
-### Setup
+Install directly from PyPI:
 
-1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/mtg-mcp.git
-cd mtg-mcp
+pip install mtg-mcp
 ```
 
-2. Create a virtual environment:
+Or using `uv`:
+
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install mtg-mcp
 ```
 
-3. Install dependencies:
-```bash
-pip install -e .
-```
+### Development Installation
+
+For development or to use the latest unreleased features, see the [Development Setup section](docs/SETUP.md#development-setup) in the Setup Guide.
 
 ## Usage
 
-### Running the Server
+For complete usage instructions and configuration examples, see the **[Configuration Guide](docs/CONFIGURATION.md)**.
 
-Start the MCP server:
+### Running as a Standalone Server
+
+After installation, you can run the server directly:
+
 ```bash
-python main.py
+mtg-mcp
 ```
 
 For debug logging:
 ```bash
-python main.py --debug
+mtg-mcp --debug
 ```
 
-### VS Code Integration
+### MCP Client Integration
 
-Add the following configuration to your `.vscode/mcp.json` file:
+Configuration examples for popular MCP clients:
 
-```json
-{
-  "servers": {
-    "mtg-mcp": {
-      "type": "stdio",
-      "command": "./.venv/bin/python",
-      "args": [
-        "main.py"
-      ]
-    }
-  }
-}
-```
+- **[Claude Desktop](docs/CONFIGURATION.md#claude-desktop)** - Desktop AI assistant
+- **[VS Code with Cline](docs/CONFIGURATION.md#vs-code-with-cline-extension)** - Code editor integration
+- **[Zed Editor](docs/CONFIGURATION.md#zed-editor)** - Modern code editor
+- **[Other MCP Clients](docs/CONFIGURATION.md#other-mcp-clients)** - Generic MCP client setup
 
-On Windows, use:
-```json
-{
-  "servers": {
-    "mtg-mcp": {
-      "type": "stdio",
-      "command": ".venv/Scripts/python.exe",
-      "args": [
-        "main.py"
-      ]
-    }
-  }
-}
-```
+See the [Configuration Guide](docs/CONFIGURATION.md) for detailed setup instructions and troubleshooting.
 
 ### Available Tools
+
+For complete API documentation with parameters, return types, and examples, see the **[Tools Documentation](docs/TOOLS.md)**.
 
 The server exposes the following MCP tools:
 
@@ -127,8 +116,11 @@ The server exposes the following MCP tools:
 - `mtg-commander-brackets`: Get Commander bracket information
 - `mtg-export-format`: Get deck export format guidelines
 - `mtg-commander-deck`: Validate commanders and generate deck data
+- `mtg-archidekt-fetch`: Fetch deck data from Archidekt
 
 ## Examples
+
+For more examples and detailed usage patterns, see the **[Quick Start Guide](docs/QUICKSTART.md)** and **[Tools Documentation](docs/TOOLS.md)**.
 
 ### Generate a Competitive EDH Deck
 
@@ -167,6 +159,7 @@ Use #mtg-combos-search to find combos with Thassa's Oracle.
 - **Commander Spellbook**: Combo interactions and synergies
 - **MTG SDK**: Card types and subtypes
 - **Wizards of the Coast**: Official comprehensive rules and banned list
+- **Archidekt**: Custom deck lookups
 
 ## Development
 
@@ -187,7 +180,7 @@ ruff format .
 
 ## Bracket System
 
-MTG-MCP includes support for the Commander bracket system (1-5):
+MTG-MCP includes support for the Commander bracket system (1-5). For detailed bracket criteria and guidelines, see the **[Tools Documentation - Commander Brackets](docs/TOOLS.md#mtg-commander-brackets)**.
 
 - **Bracket 1**: Casual/Exhibition - Budget-friendly, thematic gameplay
 - **Bracket 2**: Core - Focused strategies with some powerful cards
@@ -199,57 +192,9 @@ The deck generator respects bracket specifications when selecting cards and buil
 
 ## Export Format
 
-Generated decklists follow the standard format compatible with popular deck building tools:
+For complete export format specifications and examples, see the **[Tools Documentation - Export Format](docs/TOOLS.md#mtg-export-format)**.
 
-```
-1x Commander Name
-1x Sol Ring
-1x Arcane Signet
-10x Island
-15x Plains
-```
-
-- No comments or section headers
-- Format: `[quantity]x [Card Name]`
-- Basic lands can have multiple copies
-- All other cards follow singleton rule (1x each)
-
-## Publishing
-
-This project is published to both PyPI and the Model Context Protocol Registry for easy installation.
-
-### Automated Publishing
-
-The project uses GitHub Actions for automated publishing:
-
-1. **Push a version tag** to trigger the workflow:
-   ```bash
-   git tag v0.1.0
-   git push origin v0.1.0
-   ```
-
-2. **GitHub Actions automatically**:
-   - Builds the Python package
-   - Publishes to PyPI
-   - Publishes to MCP Registry using GitHub OIDC authentication
-
-### Prerequisites for Publishing
-
-To set up publishing for the first time, you need:
-
-1. **PyPI API Token**: Create a token at https://pypi.org/manage/account/token/
-   - Add it as a GitHub secret named `PYPI_API_TOKEN`
-   - Go to: Repository Settings → Secrets and variables → Actions → New repository secret
-
-2. **No additional secrets needed for MCP Registry**: The workflow uses GitHub OIDC for authentication
-
-### Manual Publishing (Alternative)
-
-If you prefer to publish manually:
-
-1. Install the MCP publisher CLI (see [MCP Publishing Guide](https://github.com/modelcontextprotocol/registry/blob/main/docs/guides/publishing/publish-server.md))
-2. Authenticate with GitHub: `mcp-publisher login github`
-3. Publish: `mcp-publisher publish`
+Generated decklists follow the standard format compatible with popular deck building tools like Moxfield and Archidekt.
 
 ## Contributing
 
