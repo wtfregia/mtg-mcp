@@ -69,7 +69,7 @@ uv pip install mtg-mcp
 
 ### Development Installation
 
-For development or to use the latest unreleased features, see the [Development Setup section](docs/SETUP.md#development-setup) in the Setup Guide.
+For development or to use the latest unreleased features, see the [Development Installation section](docs/SETUP.md#option-3-development-installation) in the Setup Guide.
 
 ## Usage
 
@@ -92,10 +92,8 @@ mtg-mcp --debug
 
 Configuration examples for popular MCP clients:
 
-- **[Claude Desktop](docs/CONFIGURATION.md#claude-desktop)** - Desktop AI assistant
-- **[VS Code with Cline](docs/CONFIGURATION.md#vs-code-with-cline-extension)** - Code editor integration
-- **[Zed Editor](docs/CONFIGURATION.md#zed-editor)** - Modern code editor
-- **[Other MCP Clients](docs/CONFIGURATION.md#other-mcp-clients)** - Generic MCP client setup
+- **[Claude Desktop](docs/CONFIGURATION.md#claude-desktop-configuration)** - Desktop AI assistant
+- **[VS Code with Cline](docs/CONFIGURATION.md#vs-code-cline-extension)** - Code editor integration
 
 See the [Configuration Guide](docs/CONFIGURATION.md) for detailed setup instructions and troubleshooting.
 
