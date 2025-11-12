@@ -68,13 +68,13 @@ Example:
 ```python
 import pytest
 from unittest.mock import AsyncMock, patch
-from src.tools.mymodule import my_function
+from mtg_mcp.tools.mymodule import my_function
 
 class TestMyFeature:
     @pytest.mark.asyncio
     async def test_my_function_success(self):
         """Test successful function execution"""
-        with patch('src.tools.mymodule.external_api') as mock_api:
+        with patch('mtg_mcp.tools.mymodule.external_api') as mock_api:
             mock_api.return_value = {"result": "success"}
             
             result = await my_function()
