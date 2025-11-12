@@ -1791,25 +1791,27 @@ async def fetch_archidekt_deck(deck_url: str) -> Dict[str, Any]:
                 commanders = []
                 
                 for card in cards:
+                    is_commander = False
                     for cat in card["categories"]:
                         if cat not in category_counts:
                             category_counts[cat] = 0
                         category_counts[cat] += card["quantity"]
-                        
-                        # Check if this card is a commander
                         if cat.lower() == "commander":
-                            commanders.append({
-                                "name": card["name"],
-                                "colors": card["colors"],
-                                "color_identity": card["color_identity"],
-                                "mana_cost": card["mana_cost"],
-                                "cmc": card["cmc"],
-                                "type_line": card["type_line"],
-                                "text": card["text"],
-                                "power": card["power"],
-                                "toughness": card["toughness"],
-                                "loyalty": card["loyalty"]
-                            })
+                            is_commander = True
+                    # After processing all categories, add to commanders if needed
+                    if is_commander:
+                        commanders.append({
+                            "name": card["name"],
+                            "colors": card["colors"],
+                            "color_identity": card["color_identity"],
+                            "mana_cost": card["mana_cost"],
+                            "cmc": card["cmc"],
+                            "type_line": card["type_line"],
+                            "text": card["text"],
+                            "power": card["power"],
+                            "toughness": card["toughness"],
+                            "loyalty": card["loyalty"]
+                        })
                 
                 # Calculate total cards
                 total_cards = sum(card["quantity"] for card in cards)
