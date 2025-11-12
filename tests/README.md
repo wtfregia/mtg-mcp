@@ -51,7 +51,7 @@ Tests are configured via `pytest.ini` in the project root. Key settings:
 
 - Tests are automatically discovered in the `tests/` directory
 - Async tests are automatically handled via `pytest-asyncio`
-- Coverage reports include the `src/` directory
+- Coverage reports include the `mtg_mcp/` directory
 
 ## Writing New Tests
 
