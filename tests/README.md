@@ -86,6 +86,5 @@ class TestMyFeature:
 
 Tests are automatically run on:
 - Pull requests to `main` branch
-- Pushes to `main` branch
 
 See `.github/workflows/test.yml` for the complete CI configuration.
