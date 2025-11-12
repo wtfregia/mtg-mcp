@@ -3,12 +3,12 @@
   "name": "io.github.wtfregia/mtg-mcp",
   "title": "MTG-MCP",
   "description": "Comprehensive Magic: The Gathering info with rules, cards, combos, and Commander deck generation",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "mtg-mcp",
-      "version": "0.1.0",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       }
