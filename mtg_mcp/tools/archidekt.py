@@ -12,10 +12,10 @@ logger = logging.getLogger('mtg-mcp')
 async def fetch_archidekt_deck(deck_url: str) -> Dict[str, Any]:
     """
     Fetch a deck from Archidekt using a deck URL.
-    
+
     Args:
         deck_url: The Archidekt deck URL (e.g., https://archidekt.com/decks/17187915/automation_testing)
-    
+
     Returns:
         Dictionary containing deck information and card list or an error message.
     """

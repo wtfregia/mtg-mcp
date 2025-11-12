@@ -11,10 +11,10 @@ logger = logging.getLogger('mtg-mcp')
 async def search_combos(card_name: str) -> Dict[str, Any]:
     """
     Search for Commander combos involving a specific card using the Commander Spellbook API.
-    
+
     Args:
         card_name: The name of the card to search for combos.
-    
+
     Returns:
         Dictionary containing combo information or an error message.
     """

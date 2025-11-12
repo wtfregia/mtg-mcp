@@ -16,11 +16,11 @@ logger = logging.getLogger('mtg-mcp')
 async def recommend_commander_cards(card_name: str, include_context: bool = True) -> Dict[str, Any]:
     """
     Get top 10 recommended cards for a commander from EDHREC.
-    
+
     Args:
         card_name: The name of the card (assumed to be a commander).
         include_context: If True, also includes Commander format context and bracket information.
-    
+
     Returns:
         Dictionary containing top recommended cards or an error message.
     """
@@ -202,7 +202,7 @@ async def recommend_commander_cards(card_name: str, include_context: bool = True
 async def get_commander_brackets() -> Dict[str, Any]:
     """
     Get information about Commander/EDH brackets and their criteria.
-    
+
     Returns:
         Dictionary containing bracket information, criteria, and guidelines.
     """
@@ -468,7 +468,7 @@ async def get_commander_brackets() -> Dict[str, Any]:
 async def get_export_format() -> Dict[str, Any]:
     """
     Get information about the proper format for exporting/importing Magic: The Gathering decklists.
-    
+
     Returns:
         Dictionary containing deck export format guidelines and examples.
     """
@@ -610,11 +610,11 @@ async def get_export_format() -> Dict[str, Any]:
 async def generate_commander_deck_data(commanders: List[str], bracket: int = 2) -> Dict[str, Any]:
     """
     Validate commanders and gather comprehensive data for generating a legal Commander deck.
-    
+
     Args:
         commanders: List of commander names (1-2 commanders)
         bracket: Target power level bracket (1-5, default: 2)
-    
+
     Returns:
         Dictionary containing validation results, commander data, and deck-building resources
     """
@@ -773,7 +773,7 @@ async def generate_commander_deck_data(commanders: List[str], bracket: int = 2) 
     all_colors = set()
     for cmd in result["commanders"]:
         all_colors.update(cmd["color_identity"])
-    result["color_identity"] = sorted(list(all_colors))
+    result["color_identity"] = sorted(all_colors)
 
     # Set validation status
     result["valid"] = len(validation_errors) == 0
