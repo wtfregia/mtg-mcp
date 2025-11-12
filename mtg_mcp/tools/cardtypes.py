@@ -27,10 +27,10 @@ async def get_card_types() -> Dict[str, Any]:
         "Planeswalker": ("Powerful allies", "One attack or loyalty ability per turn")
     }
 
-    type_descriptions = {
-        name: {"description": desc, "rules" if "attack" in rules else "timing": rules}
-        for name, (desc, rules) in descriptions.items()
-    }
+    type_descriptions = {}
+    for name, (desc, rules) in descriptions.items():
+        key = "rules" if "attack" in rules else "timing"
+        type_descriptions[name] = {"description": desc, key: rules}
 
     result = {
         "main_types": {},
