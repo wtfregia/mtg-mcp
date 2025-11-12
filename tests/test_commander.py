@@ -82,7 +82,7 @@ class TestCommanderRecommendations:
                     result = await recommend_commander_cards("Atraxa", include_context=False)
 
                     assert result["card_name"] == "Atraxa, Praetors' Voice"
-                    assert result["is_legendary_creature"] == True
+                    assert result["is_legendary_creature"]
                     assert "top_cards" in result
 
     @pytest.mark.asyncio
