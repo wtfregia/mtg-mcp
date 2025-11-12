@@ -198,7 +198,7 @@ async def fetch_game_changers() -> Dict[str, Any]:
                     card_name = card_info["name"]
                     try:
                         await rate_limit_api_call('scryfall')
-                        search_url = f"https://api.scryfall.com/cards/named?fuzzy={card_name}"
+                        search_url = f"https://api.scryfall.com/cards/named?exact={card_name}"
                         async with session.get(search_url) as scryfall_response:
                             if scryfall_response.status == 200:
                                 scryfall_data = await scryfall_response.json()
