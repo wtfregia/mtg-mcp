@@ -117,11 +117,10 @@ async def fetch_banned_cards() -> Dict[str, Any]:
                             "name": card.get("name", ""),
                             "type_line": card.get("type_line", ""),
                             "mana_cost": card.get("mana_cost", ""),
-                            "colors": card.get("colors", []),
+                            "cmc": card.get("cmc", 0),
                             "color_identity": card.get("color_identity", []),
                             "oracle_text": card.get("oracle_text", ""),
-                            "scryfall_uri": card.get("scryfall_uri", ""),
-                            "banned_in": ["Commander"]
+                            "scryfall_uri": card.get("scryfall_uri", "")
                         })
 
                     # Check if there's a next page
