@@ -36,7 +36,7 @@ pytest tests/test_utils.py -v
 ### Run tests with coverage
 
 ```bash
-pytest tests/ --cov=src --cov-report=html
+pytest tests/ --cov=mtg_mcp --cov-report=html
 ```
 
 ### Run tests for a specific function
