@@ -4,6 +4,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
+import mtg_mcp.utils
 from mtg_mcp.utils import (
     fetch_and_parse_rules,
     fetch_banned_cards,
@@ -88,7 +89,6 @@ class TestRulesFetching:
     async def test_get_rules_caching(self):
         """Test that rules are cached after first fetch"""
         # Reset cache
-        import mtg_mcp.utils
         mtg_mcp.utils._rules_cache = None
 
         with patch('mtg_mcp.utils.fetch_and_parse_rules') as mock_fetch:
@@ -147,7 +147,6 @@ class TestBannedCards:
     @pytest.mark.asyncio
     async def test_get_banned_cards_caching(self):
         """Test that banned cards are cached"""
-        import mtg_mcp.utils
         mtg_mcp.utils._banned_cards_cache = None
 
         with patch('mtg_mcp.utils.fetch_banned_cards') as mock_fetch:
@@ -225,7 +224,6 @@ class TestGameChangers:
     @pytest.mark.asyncio
     async def test_get_game_changers_caching(self):
         """Test that game changers are cached"""
-        import mtg_mcp.utils
         mtg_mcp.utils._game_changers_cache = None
 
         with patch('mtg_mcp.utils.fetch_game_changers') as mock_fetch:
