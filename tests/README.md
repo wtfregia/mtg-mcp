@@ -47,10 +47,10 @@ pytest tests/test_utils.py::TestRateLimiting::test_rate_limit_first_call -v
 
 ## Test Configuration
 
-Tests are configured via `pytest.ini` in the project root. Key settings:
+Tests are configured via `pyproject.toml` under the `[tool.pytest.ini_options]` section. Key settings:
 
 - Tests are automatically discovered in the `tests/` directory
-- Async tests are automatically handled via `pytest-asyncio`
+- Async tests are automatically handled via `pytest-asyncio` with `asyncio_mode = "auto"`
 - Coverage reports include the `mtg_mcp/` directory
 
 ## Writing New Tests

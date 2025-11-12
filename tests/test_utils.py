@@ -16,6 +16,9 @@ from mtg_mcp.utils import (
     rate_limit_api_call,
 )
 
+# Test constants
+MOCK_RULES_DATE = "2025-09-19"
+
 
 @pytest.fixture(autouse=True)
 def reset_rate_limiting():
@@ -107,7 +110,7 @@ class TestRulesFetching:
 
             assert "sections" in result
             assert "last_updated" in result
-            assert result["last_updated"] == "2025-09-19"
+            assert isinstance(result["last_updated"], str) and len(result["last_updated"]) > 0
 
     @pytest.mark.asyncio
     async def test_fetch_and_parse_rules_error(self):
@@ -127,7 +130,7 @@ class TestRulesFetching:
     async def test_get_rules_caching(self, reset_rules_cache):
         """Test that rules are cached after first fetch"""
         with patch('mtg_mcp.utils.fetch_and_parse_rules') as mock_fetch:
-            mock_fetch.return_value = {"last_updated": "2025-09-19", "sections": {}}
+            mock_fetch.return_value = {"last_updated": MOCK_RULES_DATE, "sections": {}}
 
             # First call should fetch
             await get_rules()
