@@ -40,7 +40,7 @@ Claude Desktop uses a JSON configuration file to manage MCP servers.
 
 #### Configuration File Locations
 
-- **MacOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 - **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
@@ -62,7 +62,7 @@ Add the following to your `claude_desktop_config.json`:
 
 If you installed MTG-MCP in a virtual environment, specify the full path:
 
-**MacOS/Linux**:
+**macOS/Linux**:
 ```json
 {
   "mcpServers": {
@@ -122,7 +122,7 @@ Create or edit `.vscode/mcp.json` in your workspace:
 
 If working on the MTG-MCP repository itself:
 
-**Linux/MacOS**:
+**Linux/macOS**:
 ```json
 {
   "servers": {

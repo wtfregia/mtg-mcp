@@ -74,7 +74,7 @@ This document provides detailed information about each tool available in the MTG
 
 ## Rules Tools
 
-### mtg.rules.get
+### mtg-rules-get
 
 **Purpose**: Get an overview of the MTG comprehensive rules structure.
 
@@ -129,7 +129,7 @@ This document provides detailed information about each tool available in the MTG
 
 ## Card Information Tools
 
-### mtg.cardtypes.get
+### mtg-cardtypes-get
 
 **Purpose**: Get detailed information about Magic card types, subtypes, and supertypes.
 
@@ -286,7 +286,7 @@ This document provides detailed information about each tool available in the MTG
 
 ---
 
-### mtg.export.format
+### mtg-export-format
 
 **Purpose**: Get the standard format for exporting/importing Magic decklists.
 

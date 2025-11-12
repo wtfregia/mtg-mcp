@@ -5,7 +5,7 @@ After installing MTG-MCP with `pip install mtg-mcp`, use one of these configurat
 ## Claude Desktop Configuration
 
 **File Location**:
-- MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 - Linux: `~/.config/Claude/claude_desktop_config.json`
 
@@ -69,7 +69,7 @@ Add the `--debug` argument to see detailed logs:
 
 If you installed in a virtual environment and the `mtg-mcp` command isn't in your PATH, specify the full path:
 
-**Claude Desktop (Linux/MacOS)**:
+**Claude Desktop (Linux/macOS)**:
 ```json
 {
   "mcpServers": {
@@ -91,7 +91,7 @@ If you installed in a virtual environment and the `mtg-mcp` command isn't in you
 }
 ```
 
-**VS Code (Linux/MacOS)**:
+**VS Code (Linux/macOS)**:
 ```json
 {
   "servers": {
