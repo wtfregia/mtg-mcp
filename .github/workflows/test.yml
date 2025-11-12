@@ -38,10 +38,11 @@ jobs:
       
       - name: Run syntax check
         run: |
-          python -m py_compile main.py
-          python -m py_compile src/utils.py
-          python -m py_compile src/tools/*.py
+          python -m py_compile mtg_mcp/__init__.py
+          python -m py_compile mtg_mcp/__main__.py
+          python -m py_compile mtg_mcp/utils.py
+          python -m py_compile mtg_mcp/tools/*.py
       
       - name: Run unit tests with coverage
         run: |
-          pytest tests/ -v --cov=src --cov-report=xml --cov-report=term
+          pytest tests/ -v --cov=mtg_mcp --cov-report=xml --cov-report=term
