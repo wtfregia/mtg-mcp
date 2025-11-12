@@ -11,3 +11,8 @@ wheels/
 
 # IDE
 .vscode
+
+# Python
+.coverage
+.pytest_cache/
+.ruff_cache/
