@@ -261,14 +261,14 @@ This document provides detailed information about each tool available in the MTG
 
 **Intended Behavior**:
 - Returns the official Commander bracket system information
-- Describes all 5 power level brackets (Bracket 1-5)
+- Describes all 4 power level brackets (Bracket 1-4)
 - Provides characteristics, strategies, and example cards for each bracket
 - Explains bracket-defining cards and effects
 - Helps players understand and communicate deck power levels
 
 **Returns**:
 - System description and source
-- Total number of brackets (5)
+- Total number of brackets (4)
 - Detailed information for each bracket:
   - Power level description
   - Characteristics

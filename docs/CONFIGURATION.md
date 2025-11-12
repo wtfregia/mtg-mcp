@@ -65,7 +65,7 @@ Add the `--debug` argument to see detailed logs:
 }
 ```
 
-## Using with Virtual Environments
+## Virtual Environment Configuration
 
 If you installed in a virtual environment and the `mtg-mcp` command isn't in your PATH, specify the full path:
 
