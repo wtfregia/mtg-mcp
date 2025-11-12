@@ -1750,8 +1750,8 @@ async def fetch_archidekt_deck(deck_url: str) -> Dict[str, Any]:
                 
                 # Build categories map
                 for category in data.get("categories", []):
-                    categories_map[category["id"]] = {
-                        "name": category["name"],
+                    categories_map[category.get("id")] = {
+                        "name": category.get("name", "Unknown"),
                         "is_premier": category.get("isPremier", False),
                         "included_in_deck": category.get("includedInDeck", True)
                     }
