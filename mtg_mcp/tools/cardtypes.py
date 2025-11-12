@@ -69,7 +69,7 @@ async def get_card_types() -> Dict[str, Any]:
                 cards = Card.where(subtype=subtype).all()[:1]
                 if cards and cards[0].type:
                     for main_type in result["subtypes"].keys():
-                        if main_type in cards[0].type:
+                        if main_type.lower() in cards[0].type.lower():
                             result["subtypes"][main_type].append(subtype)
                             break
             except Exception:
