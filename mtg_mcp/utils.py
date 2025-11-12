@@ -19,7 +19,7 @@ _api_rate_limit_ms = 100  # Minimum milliseconds between API calls
 async def rate_limit_api_call(api_name: str) -> None:
     """
     Ensure at least 100ms has passed since the last API call to the specified API.
-    
+
     Args:
         api_name: Either 'scryfall', 'commanderspellbook', or 'archidekt'
     """

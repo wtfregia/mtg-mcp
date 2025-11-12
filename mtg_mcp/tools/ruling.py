@@ -11,10 +11,10 @@ logger = logging.getLogger('mtg-mcp')
 async def search_rulings(card_name: str) -> Dict[str, Any]:
     """
     Search for official rulings for a specific Magic: The Gathering card.
-    
+
     Args:
         card_name: The name of the card to search for rulings.
-    
+
     Returns:
         Dictionary containing ruling information or an error message.
     """

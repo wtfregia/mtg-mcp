@@ -68,10 +68,10 @@ async def tool_get_card_types() -> Dict[str, Any]:
 async def tool_search_rulings(card_name: str) -> Dict[str, Any]:
     """
     Search for official rulings for a specific Magic: The Gathering card.
-    
+
     Args:
         card_name: The name of the card to search for rulings.
-    
+
     Returns:
         Dictionary containing ruling information or an error message.
     """
@@ -81,10 +81,10 @@ async def tool_search_rulings(card_name: str) -> Dict[str, Any]:
 async def tool_search_combos(card_name: str) -> Dict[str, Any]:
     """
     Search for Commander combos involving a specific card using the Commander Spellbook API.
-    
+
     Args:
         card_name: The name of the card to search for combos.
-    
+
     Returns:
         Dictionary containing combo information or an error message.
     """
@@ -94,11 +94,11 @@ async def tool_search_combos(card_name: str) -> Dict[str, Any]:
 async def tool_recommend_commander_cards(card_name: str, include_context: bool = True) -> Dict[str, Any]:
     """
     Get top 10 recommended cards for a commander from EDHREC.
-    
+
     Args:
         card_name: The name of the card (assumed to be a commander).
         include_context: If True, also includes Commander format context and bracket information.
-    
+
     Returns:
         Dictionary containing top recommended cards or an error message.
     """
@@ -108,7 +108,7 @@ async def tool_recommend_commander_cards(card_name: str, include_context: bool =
 async def tool_get_commander_brackets() -> Dict[str, Any]:
     """
     Get information about Commander/EDH brackets and their criteria.
-    
+
     Returns:
         Dictionary containing bracket information, criteria, and guidelines.
     """
@@ -118,7 +118,7 @@ async def tool_get_commander_brackets() -> Dict[str, Any]:
 async def tool_get_export_format() -> Dict[str, Any]:
     """
     Get information about the proper format for exporting/importing Magic: The Gathering decklists.
-    
+
     Returns:
         Dictionary containing deck export format guidelines and examples.
     """
@@ -128,11 +128,11 @@ async def tool_get_export_format() -> Dict[str, Any]:
 async def tool_generate_commander_deck_data(commanders: List[str], bracket: int = 2) -> Dict[str, Any]:
     """
     Validate commanders and gather comprehensive data for generating a legal Commander deck.
-    
+
     Args:
         commanders: List of commander names (1-2 commanders)
         bracket: Target power level bracket (1-5, default: 2)
-    
+
     Returns:
         Dictionary containing validation results, commander data, and deck-building resources
     """
@@ -142,10 +142,10 @@ async def tool_generate_commander_deck_data(commanders: List[str], bracket: int 
 async def tool_fetch_archidekt_deck(deck_url: str) -> Dict[str, Any]:
     """
     Fetch a deck from Archidekt using a deck URL.
-    
+
     Args:
         deck_url: The Archidekt deck URL (e.g., https://archidekt.com/decks/17187915/automation_testing)
-    
+
     Returns:
         Dictionary containing deck information and card list or an error message.
     """
