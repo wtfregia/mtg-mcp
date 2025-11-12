@@ -13,6 +13,7 @@ import time
 import sys
 import argparse
 import os
+import re
 
 # Set up logging to stderr so VS Code can capture it
 # Default to WARNING level, can be overridden with --debug flag
@@ -1696,7 +1697,6 @@ async def fetch_archidekt_deck(deck_url: str) -> Dict[str, Any]:
     
     # Extract deck ID from URL
     # URL format: https://archidekt.com/decks/{deck_id}/{deck_name}
-    import re
     match = re.search(r'/decks/(\d+)', deck_url)
     
     if not match:
