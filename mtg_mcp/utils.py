@@ -104,7 +104,7 @@ async def fetch_banned_cards() -> Dict[str, Any]:
                 async with session.get(next_page) as response:
                     if response.status != 200:
                         return {
-                            "error": "Failed to fetch banned cards",
+                            "error": "Could not fetch banned cards list",
                             "status": response.status
                         }
 
