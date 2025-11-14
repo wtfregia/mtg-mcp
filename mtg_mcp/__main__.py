@@ -9,6 +9,7 @@ from typing import Any, Dict, List
 
 from mcp.server import fastmcp
 
+# Import tool functions from mtg_mcp/tools
 from mtg_mcp.tools.archidekt import fetch_archidekt_deck
 from mtg_mcp.tools.cardtypes import get_card_types
 from mtg_mcp.tools.combos import search_combos
@@ -18,9 +19,8 @@ from mtg_mcp.tools.commander import (
     get_export_format,
     recommend_commander_cards,
 )
-
-# Import tool functions from mtg_mcp/tools
 from mtg_mcp.tools.context import get_commander_context, get_context
+from mtg_mcp.tools.moxfield import fetch_moxfield_deck
 from mtg_mcp.tools.rules import get_rules_info, search_rules
 from mtg_mcp.tools.ruling import search_rulings
 
@@ -150,6 +150,20 @@ async def tool_fetch_archidekt_deck(deck_url: str) -> Dict[str, Any]:
         Dictionary containing deck information and card list or an error message.
     """
     return await fetch_archidekt_deck(deck_url)
+
+@mcp.tool("mtg-moxfield-fetch")
+async def tool_fetch_moxfield_deck(deck_url: str) -> Dict[str, Any]:
+    """
+    Fetch a deck from Moxfield using a deck URL.
+
+    Args:
+        deck_url: The Moxfield deck URL (e.g., https://moxfield.com/decks/TdOsPBP3302BdskyLVzU-A)
+
+    Returns:
+        Dictionary containing deck information and card list or an error message.
+        For Commander decks, the commander(s) will be prominently identified in the response.
+    """
+    return await fetch_moxfield_deck(deck_url)
 
 def main():
     """Main entry point for the MCP server."""
