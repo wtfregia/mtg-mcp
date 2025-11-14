@@ -361,11 +361,11 @@ This document provides detailed information about each tool available in the MTG
 
 ## Deck Tools
 
-### mtg.archidekt.fetch
+### mtg-archidekt-fetch
 
 **Purpose**: Fetch deck information and card list from an Archidekt deck URL.
 
-**File**: [`src/tools/archidekt.py`](../src/tools/archidekt.py)
+**File**: [`mtg_mcp/tools/archidekt.py`](../mtg_mcp/tools/archidekt.py)
 
 **Parameters**:
 - `deck_url`: The Archidekt deck URL (e.g., `https://archidekt.com/decks/12345/deck-name`)
@@ -407,6 +407,91 @@ This document provides detailed information about each tool available in the MTG
 
 ---
 
+### mtg-moxfield-fetch
+
+**Purpose**: Fetch deck information and card list from a Moxfield deck URL.
+
+**File**: [`mtg_mcp/tools/moxfield.py`](../mtg_mcp/tools/moxfield.py)
+
+**Parameters**:
+- `deck_url`: The Moxfield deck URL (e.g., `https://moxfield.com/decks/TdOsPBP3302BdskyLVzU-A`)
+
+**Intended Behavior**:
+- Extracts deck ID from the provided URL
+- Fetches deck data from the Moxfield API (v3)
+- Parses deck information (name, format, authors, visibility)
+- **Prominently identifies Commander(s)** for Commander format decks
+- Organizes cards by board (mainboard, sideboard, maybeboard, commanders)
+- Provides complete card details including oracle information
+
+**Returns**:
+- Success status
+- Deck information:
+  - Deck name and description
+  - Format (commander, modern, etc.)
+  - Public URL and ID
+  - Visibility status
+  - Like, view, and comment counts
+  - Author information
+- **Commander cards** (prominently featured):
+  - Full card details for all commanders
+  - Mana cost and CMC
+  - Colors and color identity
+  - Type line and oracle text
+  - Power/toughness/loyalty
+- **Commander summary**: Quick reference string identifying the commander(s)
+- Board organization:
+  - Mainboard cards
+  - Sideboard cards
+  - Maybeboard cards
+  - Commander cards (separate board)
+- Card counts per board
+- Total card count
+- Detailed card information:
+  - Card name and quantity
+  - Mana cost and CMC
+  - Type line and oracle text
+  - Colors and color identity
+  - Power/toughness/loyalty
+  - Set information
+  - Rarity
+  - Foil status
+
+**Special Features**:
+- **Commander Detection**: For Commander format decks, the response includes a `commander_summary` field that clearly states which commander(s) are used
+- **Board Separation**: Cards are organized by their board type for accurate deck analysis
+- **Complete Metadata**: Includes social metrics (likes, views, comments) and author information
+
+**Use Cases**:
+- Importing decks from Moxfield
+- Analyzing Commander decklists with clear commander identification
+- Reviewing deck composition by board type
+- Extracting card lists for analysis or import
+- Understanding deck popularity and engagement
+
+**Example Response Structure**:
+```json
+{
+  "success": true,
+  "deck_info": { ... },
+  "commanders": [
+    {
+      "name": "Atraxa, Praetors' Voice",
+      "mana_cost": "{G}{W}{U}{B}",
+      "colors": ["G", "W", "U", "B"],
+      ...
+    }
+  ],
+  "commander_summary": "This is a commander deck with commander(s): Atraxa, Praetors' Voice",
+  "cards": [...],
+  "mainboard_count": 99,
+  "commanders_count": 1,
+  "total_cards": 100
+}
+```
+
+---
+
 ## Rate Limiting and Error Handling
 
 All tools that make external API calls implement rate limiting to respect API usage policies:
@@ -415,6 +500,7 @@ All tools that make external API calls implement rate limiting to respect API us
 - **EDHREC**: 100ms delay between calls
 - **Commander Spellbook**: Rate limited
 - **Archidekt**: Rate limited
+- **Moxfield**: Rate limited
 
 All tools include comprehensive error handling and return meaningful error messages when:
 - Cards are not found
@@ -426,9 +512,9 @@ All tools include comprehensive error handling and return meaningful error messa
 
 ## Additional Resources
 
-- **Source Code**: All tool implementations are in [`src/tools/`](../src/tools/)
+- **Source Code**: All tool implementations are in [`mtg_mcp/tools/`](../mtg_mcp/tools/)
 - **Tests**: Comprehensive unit tests are in [`tests/`](../tests/)
-- **Utilities**: Shared utilities (rate limiting, caching) are in [`src/utils.py`](../src/utils.py)
+- **Utilities**: Shared utilities (rate limiting, caching) are in [`mtg_mcp/utils.py`](../mtg_mcp/utils.py)
 
 ---
 

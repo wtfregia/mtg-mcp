@@ -38,7 +38,7 @@ MTG-MCP integrates multiple Magic: The Gathering data sources to provide AI assi
 - **Dynamic Game Changers List**: Automatically updated list of high-impact cards that affect deck power level
 - **Dynamic Banned List**: Real-time Commander banned cards list from Scryfall
 
-### Deck Generation
+### Deck Generation & Import
 
 - **Commander Deck Validation**: Validates commander legality including partner rules (Partner, Partner with, Choose a Background, Friends Forever, Doctor's Companion)
 - **[HIGHLY EXPERIMENTAL] Deck Generation**: Generates complete 100-card Commander decklists based on:
@@ -47,6 +47,9 @@ MTG-MCP integrates multiple Magic: The Gathering data sources to provide AI assi
   - Commander color identity restrictions
   - Deck composition best practices
   - Combo synergies
+- **Deck Import**: Fetch and analyze decks from popular deck-building platforms:
+  - **Moxfield**: Import decks with automatic commander detection
+  - **Archidekt**: Import decks with category organization
 - **Export Format**: Generates decklists in standard format compatible with Moxfield, Archidekt, and other deck building tools
 
 ## Installation
@@ -115,6 +118,7 @@ The server exposes the following MCP tools:
 - `mtg-export-format`: Get deck export format guidelines
 - `mtg-commander-deck`: Validate commanders and generate deck data
 - `mtg-archidekt-fetch`: Fetch deck data from Archidekt
+- `mtg-moxfield-fetch`: Fetch deck data from Moxfield (with automatic commander detection)
 
 ## Examples
 
@@ -155,9 +159,10 @@ Use #mtg-combos-search to find combos with Thassa's Oracle.
 - **Scryfall API**: Card data, rulings, and legality information
 - **EDHREC**: Commander recommendations and deck statistics
 - **Commander Spellbook**: Combo interactions and synergies
-- **MTG SDK**: Card types and subtypes
+- **MTG SDK**: Card types and subtype./vs
 - **Wizards of the Coast**: Official comprehensive rules and banned list
-- **Archidekt**: Custom deck lookups
+- **Archidekt**: Deck import
+- **Moxfield**: Deck import
 
 ## Development
 
