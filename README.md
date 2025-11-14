@@ -159,7 +159,7 @@ Use #mtg-combos-search to find combos with Thassa's Oracle.
 - **Scryfall API**: Card data, rulings, and legality information
 - **EDHREC**: Commander recommendations and deck statistics
 - **Commander Spellbook**: Combo interactions and synergies
-- **MTG SDK**: Card types and subtype./vs
+- **MTG SDK**: Card types and subtypes
 - **Wizards of the Coast**: Official comprehensive rules and banned list
 - **Archidekt**: Deck import
 - **Moxfield**: Deck import
